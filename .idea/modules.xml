@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/KatalogFilm.iml" filepath="$PROJECT_DIR$/.idea/modules/KatalogFilm.iml" group="KatalogFilm" />
+      <module fileurl="file://$PROJECT_DIR$/KatalogFilmLulus2.iml" filepath="$PROJECT_DIR$/KatalogFilmLulus2.iml" group="KatalogFilmLulus2" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="KatalogFilm/app" />
+      <module fileurl="file://$PROJECT_DIR$/favoritekatalogfilm/favoritekatalogfilm.iml" filepath="$PROJECT_DIR$/favoritekatalogfilm/favoritekatalogfilm.iml" group="KatalogFilm/favoritekatalogfilm" />
+    </modules>
+  </component>
+</project>
