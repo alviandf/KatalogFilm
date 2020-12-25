@@ -1,6 +1,8 @@
 package com.dicoding.picodiploma.katalogfilm.fragment;
 
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -27,6 +29,7 @@ import com.dicoding.picodiploma.katalogfilm.model.Movie;
 import com.dicoding.picodiploma.katalogfilm.model.MoviesResponse;
 import com.dicoding.picodiploma.katalogfilm.rest.ApiClient;
 import com.dicoding.picodiploma.katalogfilm.rest.ApiService;
+import com.dicoding.picodiploma.katalogfilm.viewmodel.NowPlayingViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,10 +40,8 @@ import retrofit2.Response;
 
 public class NowPlayingFragment extends Fragment {
 
-    private static final String TAG = MainActivity.class.getSimpleName();
-    private final static String API_KEY = BuildConfig.TMDB_API_KEY;;
     private ArrayList<Movie> list = new ArrayList<>();
-
+    ProgressBar progressBar;
     MoviesAdapter moviesAdapter;
 
     public NowPlayingFragment() {
@@ -55,60 +56,21 @@ public class NowPlayingFragment extends Fragment {
     }
 
     @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        savedInstanceState.putParcelableArrayList("list", list);
-        super.onSaveInstanceState(savedInstanceState);
-    }
-
-    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        final ProgressBar progressBar = view.findViewById(R.id.progress_bar);
+        NowPlayingViewModel nowPlayingViewModel = ViewModelProviders.of(this).get(NowPlayingViewModel.class);
+
+        progressBar = view.findViewById(R.id.progress_bar);
         progressBar.setVisibility(View.VISIBLE);
 
         final RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
         moviesAdapter = new MoviesAdapter(list, R.layout.item_movies, getActivity());
         recyclerView.setAdapter(moviesAdapter);
 
-        if(savedInstanceState != null){
-            list = savedInstanceState.getParcelableArrayList("list");
-            Log.d("werwer", String.valueOf(list.size()));
-            moviesAdapter.setDefaultView(false);
-            progressBar.setVisibility(View.GONE);
-            moviesAdapter.setListMovie(list);
-        } else {
-
-            ApiService apiService =
-                    ApiClient.getClient().create(ApiService.class);
-
-            Call<MoviesResponse> call = apiService.getNowPlayingMovies(API_KEY);
-
-            call.enqueue(new Callback<MoviesResponse>() {
-                @Override
-                public void onResponse(Call<MoviesResponse> call, Response<MoviesResponse> response) {
-                    List<Movie> movies = response.body().getResults();
-                    list.addAll(movies);
-
-                    //moviesAdapter.setDefaultView(false);
-                    progressBar.setVisibility(View.GONE);
-                    moviesAdapter.setListMovie(list);
-                    Log.d(TAG, "Number of movies received: " + movies.size());
-
-                    // Log untuk test apakah data sudah masuk atau belum
-                    for (Movie movie : movies) {
-                        Log.d("Title", movie.getTitle());
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<MoviesResponse> call, Throwable t) {
-                    Log.e(TAG, t.toString());
-                }
-            });
-        }
+        nowPlayingViewModel.getMovies().observe(this, new MovieObserver());
+        nowPlayingViewModel.loadMovies();
 
         ItemClickSupport.addTo(recyclerView).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
             @Override
@@ -123,6 +85,18 @@ public class NowPlayingFragment extends Fragment {
         Intent moveWithObjectIntent = new Intent(getActivity(), DetailActivity.class);
         moveWithObjectIntent.putExtra(DetailActivity.EXTRA_MOVIE, movie);
         startActivity(moveWithObjectIntent);
+    }
+
+    private class MovieObserver implements Observer<List<Movie>> {
+
+        @Override
+        public void onChanged(@Nullable List<Movie> movies) {
+            if (movies == null) return;
+            list.addAll(movies);
+            moviesAdapter.setListMovie(list);
+
+            progressBar.setVisibility(View.GONE);
+        }
     }
 }
 
