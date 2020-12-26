@@ -23,15 +23,11 @@ import retrofit2.Response;
 public class NowPlayingViewModel extends ViewModel {
 
     ApiService apiService;
-
     private MutableLiveData<List<Movie>> movies;
-    private MutableLiveData<Boolean> isLoading;
-
     private final static String API_KEY = BuildConfig.TMDB_API_KEY;;
 
     public NowPlayingViewModel() {
         movies = new MutableLiveData<>();
-        isLoading = new MutableLiveData<>();
     }
 
     public MutableLiveData<List<Movie>> getMovies() {

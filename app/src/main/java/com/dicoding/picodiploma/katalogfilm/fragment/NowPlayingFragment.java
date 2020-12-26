@@ -92,6 +92,7 @@ public class NowPlayingFragment extends Fragment {
         @Override
         public void onChanged(@Nullable List<Movie> movies) {
             if (movies == null) return;
+            list.clear();
             list.addAll(movies);
             moviesAdapter.setListMovie(list);
 
