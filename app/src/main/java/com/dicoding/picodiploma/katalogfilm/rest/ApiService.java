@@ -7,7 +7,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
-
 public interface ApiService {
     @GET("movie/now_playing")
     Call<MoviesResponse> getNowPlayingMovies(@Query("api_key") String apiKey);

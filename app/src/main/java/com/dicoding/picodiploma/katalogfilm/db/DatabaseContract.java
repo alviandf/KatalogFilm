@@ -14,7 +14,6 @@ public class DatabaseContract {
         public static String OVERVIEW = "overview";
         public static String POSTER_PATH = "poster_path";
         public static String RELEASE_DATE = "release_date";
-
     }
 
     public static final String AUTHORITY = "com.dicoding.picodiploma.katalogfilm";

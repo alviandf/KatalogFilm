@@ -49,7 +49,6 @@ public class MovieProvider extends ContentProvider {
                 break;
             case MOVIE_ID:
                 cursor = noteHelper.queryByIdProvider(uri.getLastPathSegment());
-                Log.d("aweu", String.valueOf(cursor));
                 break;
             default:
                 cursor = null;

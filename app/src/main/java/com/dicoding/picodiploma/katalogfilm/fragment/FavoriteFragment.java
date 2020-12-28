@@ -9,7 +9,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +34,6 @@ public class FavoriteFragment extends Fragment {
 
     private Cursor cList;
     private FavoriteAdapter adapter;
-    RecyclerView tempRecyclerView;
 
     public FavoriteFragment() {
         // Required empty public constructor
@@ -56,7 +54,6 @@ public class FavoriteFragment extends Fragment {
         progressBar.setVisibility(View.VISIBLE);
 
         final RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
-        tempRecyclerView = recyclerView;
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setHasFixedSize(true);
 
@@ -65,6 +62,7 @@ public class FavoriteFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
         new LoadMovieAsync().execute();
+
     }
 
     @Override
@@ -88,16 +86,10 @@ public class FavoriteFragment extends Fragment {
         @Override
         protected void onPostExecute(Cursor movies) {
             super.onPostExecute(movies);
-            //progressBar.setVisibility(View.GONE);
-
             cList = movies;
             adapter.setListFavorites(cList);
             progressBar.setVisibility(View.GONE);
             adapter.notifyDataSetChanged();
-
-            if (cList.getCount() == 0){
-                //showSnackbarMessage("Tidak ada data saat ini");
-            }
         }
     }
 

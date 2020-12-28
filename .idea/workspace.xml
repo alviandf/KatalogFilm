@@ -5,20 +5,33 @@
       <config />
     </shared>
   </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="MovHelper" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="ae1cea10-62b0-446c-9a4c-83902b2c5985" name="Default Changelist" comment="Testing, Hapus Readme">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/picodiploma/katalogfilm/viewmodel/SearchViewModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/picodiploma/katalogfilm/viewmodel/UpcomingViewModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/picodiploma/katalogfilm/fragment/NowPlayingFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/picodiploma/katalogfilm/fragment/NowPlayingFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/picodiploma/katalogfilm/activity/DetailActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/picodiploma/katalogfilm/activity/DetailActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/picodiploma/katalogfilm/activity/FavoriteDetailActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/picodiploma/katalogfilm/activity/FavoriteDetailActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/picodiploma/katalogfilm/activity/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/picodiploma/katalogfilm/activity/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/picodiploma/katalogfilm/activity/SettingActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/picodiploma/katalogfilm/activity/SettingActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/picodiploma/katalogfilm/adapter/FavoriteAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/picodiploma/katalogfilm/adapter/FavoriteAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/picodiploma/katalogfilm/db/DatabaseContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/picodiploma/katalogfilm/db/DatabaseContract.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/picodiploma/katalogfilm/db/DatabaseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/picodiploma/katalogfilm/db/DatabaseHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/picodiploma/katalogfilm/db/MovieHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/picodiploma/katalogfilm/db/MovieHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/picodiploma/katalogfilm/fragment/FavoriteFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/picodiploma/katalogfilm/fragment/FavoriteFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/picodiploma/katalogfilm/fragment/SearchFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/picodiploma/katalogfilm/fragment/SearchFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/picodiploma/katalogfilm/fragment/UpcomingFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/picodiploma/katalogfilm/fragment/UpcomingFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/picodiploma/katalogfilm/viewmodel/NowPlayingViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/picodiploma/katalogfilm/viewmodel/NowPlayingViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/picodiploma/katalogfilm/provider/MovieProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/picodiploma/katalogfilm/provider/MovieProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/picodiploma/katalogfilm/rest/ApiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/picodiploma/katalogfilm/rest/ApiService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/picodiploma/katalogfilm/setting/AlarmReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/picodiploma/katalogfilm/setting/AlarmReceiver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_detail.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +83,7 @@
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="device.picker.selection" value="Nexus_5X_API_24" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
-    <property name="settings.editor.selected.configurable" value="settings.github" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RunManager" selected="Android App.app">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
@@ -233,6 +246,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="517" y="269" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.0.1536.864@0.0.1536.864" timestamp="1608897633692" />
+    <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1608968962591">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.864@0.0.1536.864" timestamp="1608968962591" />
     <state x="93" y="93" width="1350" height="678" key="AVDManager" timestamp="1608878525572">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -245,34 +262,34 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="154" y="0" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1608898507407" />
-    <state x="541" y="177" key="FileChooserDialogImpl" timestamp="1608897645492">
+    <state x="541" y="177" key="FileChooserDialogImpl" timestamp="1609043575921">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="541" y="177" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1608897645492" />
+    <state x="541" y="177" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1609043575921" />
     <state x="631" y="316" key="Github.ShareDialog" timestamp="1608525120029">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="631" y="316" key="Github.ShareDialog/0.0.1536.864@0.0.1536.864" timestamp="1608525120029" />
-    <state width="1491" height="114" key="GridCell.Tab.0.bottom" timestamp="1608901198259">
+    <state width="1491" height="66" key="GridCell.Tab.0.bottom" timestamp="1609046263105">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1491" height="114" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1608901198259" />
-    <state width="1491" height="114" key="GridCell.Tab.0.center" timestamp="1608901198259">
+    <state width="1491" height="66" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1609046263105" />
+    <state width="1491" height="66" key="GridCell.Tab.0.center" timestamp="1609046263105">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1491" height="114" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1608901198259" />
-    <state width="1491" height="114" key="GridCell.Tab.0.left" timestamp="1608901198259">
+    <state width="1491" height="66" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1609046263105" />
+    <state width="1491" height="66" key="GridCell.Tab.0.left" timestamp="1609046263104">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1491" height="114" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1608901198259" />
-    <state width="1491" height="114" key="GridCell.Tab.0.right" timestamp="1608901198259">
+    <state width="1491" height="66" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1609046263104" />
+    <state width="1491" height="66" key="GridCell.Tab.0.right" timestamp="1609046263105">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1491" height="114" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1608901198259" />
-    <state x="269" y="65" key="SettingsEditor" timestamp="1608524936321">
+    <state width="1491" height="66" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1609046263105" />
+    <state x="269" y="65" key="SettingsEditor" timestamp="1608999908155">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="269" y="65" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1608524936321" />
+    <state x="269" y="65" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1608999908155" />
     <state x="441" y="270" key="com.intellij.ide.util.TipDialog" timestamp="1608715607784">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -281,13 +298,25 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="570" y="339" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.864@0.0.1536.864" timestamp="1608525329371" />
-    <state x="425" y="197" key="run.anything.popup" timestamp="1608898450951">
+    <state x="425" y="197" key="run.anything.popup" timestamp="1609000383986">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="425" y="197" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1608898450951" />
+    <state x="425" y="197" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1609000383986" />
     <state x="425" y="85" width="672" height="676" key="search.everywhere.popup" timestamp="1608899797247">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="425" y="85" width="672" height="676" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1608899797247" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-field">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/dicoding/picodiploma/katalogfilm/fragment/NowPlayingFragment.java</url>
+          <line>43</line>
+          <properties field="progressBar" class="com.dicoding.picodiploma.katalogfilm.fragment.NowPlayingFragment" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

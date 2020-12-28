@@ -56,11 +56,6 @@ public class UpcomingFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_upcoming, container, false);
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        savedInstanceState.putParcelableArrayList("list", list);
-        super.onSaveInstanceState(savedInstanceState);
-    }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {

@@ -110,11 +110,5 @@
             android:textSize="15sp"
             android:text="Overview" />
 
-        <Button
-            android:id="@+id/btn_delete"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:text="Delete From Favorite"/>
     </LinearLayout>
 </ScrollView>

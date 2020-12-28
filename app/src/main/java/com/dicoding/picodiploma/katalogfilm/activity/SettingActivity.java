@@ -15,7 +15,6 @@ public class SettingActivity extends AppCompatActivity {
     SettingPreference settingPreference;
     private AlarmReceiver alarmReceiver;
 
-
     private boolean isDailyReminder;
     private boolean isReleaseReminder;
 

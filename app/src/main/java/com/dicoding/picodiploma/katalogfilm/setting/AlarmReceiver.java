@@ -78,13 +78,13 @@ public class AlarmReceiver extends BroadcastReceiver {
                         }
                     }
                 }else {
-                    Log.e("Wadaw", "error");
+                    Log.d("TAG", "onResponse: error");
                 }
             }
 
             @Override
             public void onFailure(Call<MoviesResponse> call, Throwable t) {
-                Log.e("Wadaw", t.toString());
+                Log.e("TAG", "onFailure: " + t.toString());
             }
         });
     }

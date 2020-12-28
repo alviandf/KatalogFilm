@@ -1,20 +1,14 @@
 package com.dicoding.picodiploma.katalogfilm.activity;
 
 import android.content.ContentValues;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,8 +16,6 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.dicoding.picodiploma.katalogfilm.R;
 import com.dicoding.picodiploma.katalogfilm.db.MovieHelper;
-import com.dicoding.picodiploma.katalogfilm.fragment.FavoriteFragment;
-import com.dicoding.picodiploma.katalogfilm.fragment.SearchFragment;
 import com.dicoding.picodiploma.katalogfilm.model.Movie;
 
 import static android.provider.BaseColumns._ID;
@@ -35,10 +27,7 @@ import static com.dicoding.picodiploma.katalogfilm.db.DatabaseContract.MovieColu
 import static com.dicoding.picodiploma.katalogfilm.db.DatabaseContract.MovieColumns.TITLE;
 import static com.dicoding.picodiploma.katalogfilm.db.DatabaseContract.MovieColumns.VOTE_AVERAGE;
 
-public class FavoriteDetailActivity extends AppCompatActivity implements View.OnClickListener{
-
-    public static String EXTRA_NOTE = "extra_note";
-    public static String EXTRA_POSITION = "extra_position";
+public class FavoriteDetailActivity extends AppCompatActivity{
 
     private boolean isEdit = false;
 
@@ -55,15 +44,14 @@ public class FavoriteDetailActivity extends AppCompatActivity implements View.On
     public static String posterPath;
     public static String releaseDate;
 
-    Button btnDelete;
     ImageView imgPoster;
     TextView tvTitle;
     TextView tvVoteAverage;
     TextView tvOverview;
     TextView tvReleaseDate;
+    MenuItem itemFavorite;
 
     private Movie movie;
-    //private int position;
     private MovieHelper movieHelper;
 
     @Override
@@ -71,14 +59,11 @@ public class FavoriteDetailActivity extends AppCompatActivity implements View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        btnDelete = findViewById(R.id.btn_delete);
         imgPoster = findViewById(R.id.img_poster);
         tvTitle = findViewById(R.id.tv_title);
         tvVoteAverage = findViewById(R.id.tv_rating);
         tvOverview = findViewById(R.id.tv_overview);
         tvReleaseDate = findViewById(R.id.tv_release_date);
-
-        btnDelete.setOnClickListener(this);
 
         movieHelper = new MovieHelper(this);
         movieHelper.open();
@@ -103,7 +88,6 @@ public class FavoriteDetailActivity extends AppCompatActivity implements View.On
             posterPath = movie.getPosterPath();
             releaseDate = movie.getReleaseDate();
 
-
             Glide.with(this).load("https://image.tmdb.org/t/p/w185/" + posterPath).into(imgPoster);
             tvTitle.setText(title);
             tvReleaseDate.setText(releaseDate);
@@ -126,34 +110,37 @@ public class FavoriteDetailActivity extends AppCompatActivity implements View.On
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.detail_menu, menu);
+
+        itemFavorite = menu.findItem(R.id.action_favorite);
+        if(movieHelper.isMovieFavorite(id)){
+            itemFavorite.setIcon(R.drawable.ic_favorite_true);
+        }
+
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_favorite) {
-            Toast.makeText(FavoriteDetailActivity.this, "Favorit berhasil ditambahkan", Toast.LENGTH_LONG).show();
-            ContentValues values = new ContentValues();
-            values.put(_ID,id);
-            values.put(ID,id);
-            values.put(OVERVIEW, overview);
-            values.put(POSTER_PATH, posterPath);
-            values.put(RELEASE_DATE, releaseDate);
-            values.put(VOTE_AVERAGE, voteAverage);
-            values.put(TITLE, title);
-            getContentResolver().insert(CONTENT_URI,values);
-            setResult(RESULT_ADD);
-            finish();
+            if(movieHelper.isMovieFavorite(id)){
+                movieHelper.delete(Integer.parseInt(id));
+                item.setIcon(R.drawable.ic_favorite_false);
+            } else {
+                Toast.makeText(FavoriteDetailActivity.this, "Favorit berhasil ditambahkan", Toast.LENGTH_LONG).show();
+                ContentValues values = new ContentValues();
+                values.put(_ID,id);
+                values.put(ID,id);
+                values.put(OVERVIEW, overview);
+                values.put(POSTER_PATH, posterPath);
+                values.put(RELEASE_DATE, releaseDate);
+                values.put(VOTE_AVERAGE, voteAverage);
+                values.put(TITLE, title);
+                getContentResolver().insert(CONTENT_URI,values);
+                setResult(RESULT_ADD);
+
+                item.setIcon(R.drawable.ic_favorite_true);
+            }
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onClick(View v) {
-        if(v.getId() == R.id.btn_delete){
-            getContentResolver().delete(getIntent().getData(),null,null);
-            setResult( RESULT_DELETE, null);
-            finish();
-        }
     }
 }

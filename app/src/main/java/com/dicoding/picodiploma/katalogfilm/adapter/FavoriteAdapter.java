@@ -71,7 +71,6 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.MovieV
         if (listMovie == null && listFavorites != null) {
             return listFavorites.getCount();
         } else if (listMovie != null) {
-            Log.d("werwer", "getItemCount: "+listMovie.size());
             return listMovie.size();
         }
         return 0;

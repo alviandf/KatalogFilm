@@ -33,21 +33,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             DatabaseContract.MovieColumns.RELEASE_DATE
     );
 
-    /*private static final String SQL_CREATE_TABLE_NOTE = String.format("CREATE TABLE %s"
-                    + " (%s INTEGER PRIMARY KEY AUTOINCREMENT," +
-                    " %s TEXT NOT NULL," +
-                    " %s TEXT NOT NULL," +
-                    " %s TEXT NOT NULL)",
-            DatabaseContract.TABLE_NOTE,
-            DatabaseContract.MovieColumns._ID,
-            DatabaseContract.MovieColumns.TITLE,
-            DatabaseContract.MovieColumns.DESCRIPTION,
-            DatabaseContract.MovieColumns.DATE
-    );*/
-
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
+
+
 
     @Override
     public void onCreate(SQLiteDatabase db) {

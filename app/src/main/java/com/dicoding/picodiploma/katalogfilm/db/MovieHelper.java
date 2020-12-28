@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import static android.provider.MediaStore.Audio.Playlists.Members._ID;
 import static com.dicoding.picodiploma.katalogfilm.db.DatabaseContract.MovieColumns.ID;
@@ -30,56 +31,25 @@ public class MovieHelper {
     public void close(){
         dataBaseHelper.close();
     }
-/*
-    public ArrayList<Movie> query(){
-        ArrayList<Movie> arrayList = new ArrayList<Movie>();
-        Cursor cursor = database.query(DATABASE_TABLE
-                ,null
-                ,null
-                ,null
-                ,null
-                ,null,_ID +" DESC"
-                ,null);
-        cursor.moveToFirst();
-        Movie movie;
-        if (cursor.getCount()>0) {
-            do {
 
-                movie = new Movie();
-                movie.setId(cursor.getInt(cursor.getColumnIndexOrThrow(ID)));
-                /*movie.setTitle(cursor.getString(cursor.getColumnIndexOrThrow(TITLE)));
-                movie.setDescription(cursor.getString(cursor.getColumnIndexOrThrow(DESCRIPTION)));
-                movie.setDate(cursor.getString(cursor.getColumnIndexOrThrow(DATE)));
-
-                arrayList.add(movie);
-                cursor.moveToNext();
-
-            } while (!cursor.isAfterLast());
-        }
-        cursor.close();
-        return arrayList;
-    }
-
-    public long insert(Note note){
-        ContentValues initialValues =  new ContentValues();
-        initialValues.put(TITLE, note.getTitle());
-        initialValues.put(DESCRIPTION, note.getDescription());
-        initialValues.put(DATE, note.getDate());
-        return database.insert(DATABASE_TABLE, null, initialValues);
-    }
-
-    public int update(Note note){
-        ContentValues args = new ContentValues();
-        args.put(TITLE, note.getTitle());
-        args.put(DESCRIPTION, note.getDescription());
-        args.put(DATE, note.getDate());
-        return database.update(DATABASE_TABLE, args, _ID + "= '" + note.getId() + "'", null);
-    }
-*/
     public int delete(int id){
         return database.delete(TABLE_FAVORITE_MOVIE, ID + " = '"+id+"'", null);
     }
 
+    public boolean isMovieFavorite(String id){
+
+        String query = "SELECT * FROM "+DatabaseContract.TABLE_FAVORITE_MOVIE+" WHERE id like '"+id+"'";
+        boolean isMovieFavorite;
+
+        Cursor row  = database.rawQuery(query, null);
+        if (row.moveToFirst() && row.getCount() > 0){
+            isMovieFavorite = true;
+        } else {
+            isMovieFavorite = false;
+        }
+
+        return isMovieFavorite;
+    }
 
     public Cursor queryByIdProvider(String id){
         return database.query(DATABASE_TABLE,null

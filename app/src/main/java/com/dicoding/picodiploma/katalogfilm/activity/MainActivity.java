@@ -22,7 +22,7 @@ import com.dicoding.picodiploma.katalogfilm.setting.SettingPreference;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
-    FragmentTransaction mFragmentTransaction;
+//    FragmentTransaction mFragmentTransaction;
     FragmentManager mFragmentManager;
 
     private AlarmReceiver alarmReceiver;
@@ -49,44 +49,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         BottomNavigationView bottomNavigationView = findViewById(R.id.bn_main);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
-        if (savedInstanceState != null) {
-            Fragment fragment = getSupportFragmentManager().getFragment(savedInstanceState, "fragment");
-            if (fragment instanceof NowPlayingFragment) {
-                nowPlayingFragment = (NowPlayingFragment) getSupportFragmentManager().getFragment(savedInstanceState, "fragment");
-                fragmentActive = 1;
-            }else if (fragment instanceof UpcomingFragment){
-                upcomingFragment = (UpcomingFragment) getSupportFragmentManager().getFragment(savedInstanceState, "fragment");
-                fragmentActive = 2;
-            }else if (fragment instanceof SearchFragment){
-                searchFragment = (SearchFragment) getSupportFragmentManager().getFragment(savedInstanceState, "fragment");
-                fragmentActive = 3;
-            }else if (fragment instanceof FavoriteFragment){
-                favoriteFragment = (FavoriteFragment) getSupportFragmentManager().getFragment(savedInstanceState, "fragment");
-                fragmentActive = 4;
-            }
-            updateFragment();
-        } else {
-           loadFragment(nowPlayingFragment);
-        }
-    }
-
-    private void updateFragment(){
-        mFragmentTransaction = mFragmentManager.beginTransaction();
-        switch (fragmentActive) {
-            case 1:
-                mFragmentTransaction.replace(R.id.frame_layout, nowPlayingFragment, NowPlayingFragment.class.getSimpleName());
-                break;
-            case 2:
-                mFragmentTransaction.replace(R.id.frame_layout, upcomingFragment, UpcomingFragment.class.getSimpleName());
-                break;
-            case 3:
-                mFragmentTransaction.replace(R.id.frame_layout, searchFragment, SearchFragment.class.getSimpleName());
-                break;
-            case 4:
-                mFragmentTransaction.replace(R.id.frame_layout, favoriteFragment, FavoriteFragment.class.getSimpleName());
-                break;
-        }
-        mFragmentTransaction.commit();
+        loadFragment(nowPlayingFragment);
+        fragmentActive = 1;
     }
 
     private void setAlarmReceiver(){
@@ -157,9 +121,22 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
 
     public void refresh(){
-        Intent intent = getIntent();
-        finish();
-        startActivity(intent);
+        Fragment fragment = null;
+        switch (fragmentActive){
+            case 1:
+                fragment = new NowPlayingFragment();
+                break;
+            case 2:
+                fragment = new UpcomingFragment();
+                break;
+            case 3:
+                fragment = new FavoriteFragment();
+                break;
+            case 4:
+                fragment = new SearchFragment();
+                break;
+        }
+        loadFragment(fragment);
     }
 }
 
