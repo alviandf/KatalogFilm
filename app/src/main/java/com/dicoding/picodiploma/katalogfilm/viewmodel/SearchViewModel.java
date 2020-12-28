@@ -31,7 +31,6 @@ public class SearchViewModel extends ViewModel {
         return movies;
     }
 
-
     public void loadMovies(String searchMovie) {
 
         apiService = ApiClient.getClient().create(ApiService.class);

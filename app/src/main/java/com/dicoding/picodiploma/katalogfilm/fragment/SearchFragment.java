@@ -42,9 +42,11 @@ import retrofit2.Response;
 public class SearchFragment extends Fragment implements View.OnClickListener {
 
     private ArrayList<Movie> list = new ArrayList<>();
+
+    boolean isSearched;
+
     RecyclerView tempRecyclerView;
     ProgressBar progressBar;
-
     SearchViewModel searchViewModel;
     EditText edtSearch;
     Button btnSearch;
@@ -84,7 +86,10 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
         recyclerView.setAdapter(moviesAdapter);
 
         searchViewModel.getMovies().observe(this, new SearchFragment.MovieObserver());
-        searchViewModel.loadMovies("");
+
+        if (savedInstanceState == null){
+            searchViewModel.loadMovies("");
+        }
 
         ItemClickSupport.addTo(recyclerView).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
             @Override
@@ -108,6 +113,8 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
 
             String inputSearch = edtSearch.getText().toString().trim();
             searchViewModel.loadMovies(inputSearch);
+
+            isSearched = true;
         }
     }
 
@@ -124,4 +131,10 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
         }
     }
 
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putBoolean("isSearched", isSearched);
+    }
 }

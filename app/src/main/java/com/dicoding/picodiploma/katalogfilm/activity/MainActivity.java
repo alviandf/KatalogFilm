@@ -1,6 +1,7 @@
 package com.dicoding.picodiploma.katalogfilm.activity;
 
 import android.content.Intent;
+import android.os.PersistableBundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -22,7 +23,7 @@ import com.dicoding.picodiploma.katalogfilm.setting.SettingPreference;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
-//    FragmentTransaction mFragmentTransaction;
+    FragmentTransaction mFragmentTransaction;
     FragmentManager mFragmentManager;
 
     private AlarmReceiver alarmReceiver;
@@ -49,8 +50,51 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         BottomNavigationView bottomNavigationView = findViewById(R.id.bn_main);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
-        loadFragment(nowPlayingFragment);
-        fragmentActive = 1;
+        if (savedInstanceState != null) {
+            Fragment fragment = getSupportFragmentManager().getFragment(savedInstanceState, "fragment");
+            if (fragment instanceof NowPlayingFragment) {
+                nowPlayingFragment = (NowPlayingFragment) getSupportFragmentManager().getFragment(savedInstanceState, "fragment");
+                fragmentActive = 1;
+            }else if (fragment instanceof UpcomingFragment){
+                upcomingFragment = (UpcomingFragment) getSupportFragmentManager().getFragment(savedInstanceState, "fragment");
+                fragmentActive = 2;
+            }else if (fragment instanceof SearchFragment){
+                searchFragment = (SearchFragment) getSupportFragmentManager().getFragment(savedInstanceState, "fragment");
+                fragmentActive = 3;
+            }else if (fragment instanceof FavoriteFragment){
+                favoriteFragment = (FavoriteFragment) getSupportFragmentManager().getFragment(savedInstanceState, "fragment");
+                fragmentActive = 4;
+            }
+            updateFragment();
+        } else {
+            loadFragment(nowPlayingFragment);
+        }
+    }
+
+//    @Override
+//    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+//        super.onSaveInstanceState(outState, outPersistentState);
+//
+//        getSupportFragmentManager().putFragment(outState, "fragment", mMyFragment);
+//    }
+
+    private void updateFragment(){
+        mFragmentTransaction = mFragmentManager.beginTransaction();
+        switch (fragmentActive) {
+            case 1:
+                mFragmentTransaction.replace(R.id.frame_layout, nowPlayingFragment, NowPlayingFragment.class.getSimpleName());
+                break;
+            case 2:
+                mFragmentTransaction.replace(R.id.frame_layout, upcomingFragment, UpcomingFragment.class.getSimpleName());
+                break;
+            case 3:
+                mFragmentTransaction.replace(R.id.frame_layout, searchFragment, SearchFragment.class.getSimpleName());
+                break;
+            case 4:
+                mFragmentTransaction.replace(R.id.frame_layout, favoriteFragment, FavoriteFragment.class.getSimpleName());
+                break;
+        }
+        mFragmentTransaction.commit();
     }
 
     private void setAlarmReceiver(){
@@ -104,7 +148,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
